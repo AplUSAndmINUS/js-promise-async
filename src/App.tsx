@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.scss';
+
+export const App = () => {
+  const Hello = <p>Hello!</p>
+
+  // typescript error due to return--would need to be fixed in TSConfig
+  const myFunction = async () => Hello;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {myFunction()
+        .then((value: any) => value)
+        .error((error: any) => console.error(error))}
     </div>
   );
 }
